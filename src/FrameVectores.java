@@ -19,6 +19,11 @@ public class FrameVectores extends javax.swing.JFrame {
     double v[];
     public FrameVectores() {
         initComponents();
+        cmbCrear.setEnabled(true);
+        cmbLlenarManual.setEnabled(false);
+        cmbLlenarAutom.setEnabled(false);
+        cmbMostrar.setEnabled(false);
+        cmbBorrar.setEnabled(true);
     }
 
     /**
@@ -46,7 +51,6 @@ public class FrameVectores extends javax.swing.JFrame {
         txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -127,9 +131,21 @@ public class FrameVectores extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 260, 160));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 400));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 51, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
-        pack();
+        setSize(new java.awt.Dimension(545, 379));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCrearActionPerformed
@@ -151,6 +167,12 @@ public class FrameVectores extends javax.swing.JFrame {
             longitud= Integer.parseInt(txtLongitud.getText().trim());
             v= new double [longitud];
             JOptionPane.showMessageDialog(this, "Vector creado Exitosamente");
+        
+        cmbCrear.setEnabled(false);
+        cmbLlenarAutom.setEnabled(true);
+        cmbLlenarManual.setEnabled(true);
+        cmbMostrar.setEnabled(false);
+        txtLongitud.setEditable(false);
         }
     }//GEN-LAST:event_cmbCrearActionPerformed
 
@@ -171,7 +193,11 @@ public class FrameVectores extends javax.swing.JFrame {
             n= Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion"+ i));
             v[i]=n;
         }
-        
+        cmbCrear.setEnabled(false);
+        cmbLlenarAutom.setEnabled(false);
+        cmbMostrar.setEnabled(true);
+        cmbBorrar.setEnabled(true);
+        cmbLlenarManual.setEnabled(false);
     }//GEN-LAST:event_cmbLlenarManualActionPerformed
 
     private void cmbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMostrarActionPerformed
@@ -179,8 +205,12 @@ public class FrameVectores extends javax.swing.JFrame {
         for (int i = 0; i < v.length; i++) 
         {
             txtResultado.append(v[i]+"\n");
-            
         }
+        cmbCrear.setEnabled(false);
+        cmbLlenarAutom.setEnabled(false);
+        cmbMostrar.setEnabled(false);
+        cmbBorrar.setEnabled(true);
+        cmbLlenarManual.setEnabled(false);
     }//GEN-LAST:event_cmbMostrarActionPerformed
 
     private void cmbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBorrarActionPerformed
@@ -189,6 +219,13 @@ public class FrameVectores extends javax.swing.JFrame {
         txtResultado.setText("");
         txtLongitud.requestFocusInWindow();
         v= null;
+        
+        cmbCrear.setEnabled(true);
+        cmbLlenarAutom.setEnabled(false);
+        cmbMostrar.setEnabled(false);
+        cmbBorrar.setEnabled(true);
+        cmbLlenarManual.setEnabled(false);
+        txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmbBorrarActionPerformed
 
     private void cmbLlenarAutomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenarAutomActionPerformed
@@ -199,6 +236,11 @@ public class FrameVectores extends javax.swing.JFrame {
             n= (int)(Math.random()* 50 + 1);
             v[i]=n;
         }
+        cmbCrear.setEnabled(false);
+        cmbLlenarAutom.setEnabled(false);
+        cmbMostrar.setEnabled(true);
+        cmbBorrar.setEnabled(true);
+        cmbLlenarManual.setEnabled(false);
     }//GEN-LAST:event_cmbLlenarAutomActionPerformed
 
     /**
