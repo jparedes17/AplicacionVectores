@@ -188,21 +188,34 @@ public class FrameVectores extends javax.swing.JFrame {
     private void cmbLlenarManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenarManualActionPerformed
         // TODO add your handling code here:
         double n;
+        int sw,res = 0;
         for (int i = 0; i < v.length; i++) 
         {
-            try{
+            do {
+                sw=1;
+            try 
+            {
             n= Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion"+ i));
             v[i]=n;
-            } catch (NumberFormatException e)
+            } 
+            catch (NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(this, "Digite un numero valido");
+                sw=0;
             } catch (NullPointerException e)
             {
-              JOptionPane.showMessageDialog(this, "No puedes salir");
+              JOptionPane.showConfirmDialog(this, "¿Seguro que desea salir", "Salir", JOptionPane.YES_NO_OPTION);
+                if (res==0){
+                    sw=1;
+                    i= v.length;
+                }
+                else {
+                    sw=0;
+                }
             }
-            
+            } while (sw==0);
             }
-        
+    
         cmbCrear.setEnabled(false);
         cmbLlenarAutom.setEnabled(false);
         cmbMostrar.setEnabled(true);
