@@ -188,7 +188,7 @@ public class FrameVectores extends javax.swing.JFrame {
     private void cmbLlenarManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLlenarManualActionPerformed
         // TODO add your handling code here:
         double n;
-        int sw,res = 0;
+        int sw,res;
         for (int i = 0; i < v.length; i++) 
         {
             do {
@@ -204,7 +204,7 @@ public class FrameVectores extends javax.swing.JFrame {
                 sw=0;
             } catch (NullPointerException e)
             {
-              JOptionPane.showConfirmDialog(this, "¿Seguro que desea salir", "Salir", JOptionPane.YES_NO_OPTION);
+              res=JOptionPane.showConfirmDialog(this, "¿Seguro que desea salir", "Salir", JOptionPane.YES_NO_OPTION);
                 if (res==0){
                     sw=1;
                     i= v.length;
